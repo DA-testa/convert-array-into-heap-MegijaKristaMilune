@@ -3,39 +3,65 @@
 
 def build_heap(data):
     swaps = []
-    # TODO: Creat heap and heap sort
-    # try to achieve  O(n) and not O(n2)
+  
+
+    for i in range(len(data) // 2 -1, -1, -1);
+        heapify(data, i, len(data), swaps)
 
 
     return swaps
 
 
+def heapify(data, i, n, swaps):
+    left_child = 2*i+1
+    right_child = 2*i+2
+    smallest = i
+
+    if left_child < n and data[left_child] < data[smallest]:
+        smallest = left_child
+
+    if right_child < n and data[right_child] < data[smallest]:
+        smallest = right_child
+
+    if smallest != i:
+
+        data[i], data[smallest] = data[smallest], data[i]
+
+        swaps.append((i, smallest))
+
+        heapify(data, smallest, n, swaps)
+
+
 def main():
     
-    # TODO : add input and corresponding checks
-    # add another input for I or F 
-    # first two tests are from keyboard, third test is from a file
+   input_method = input("Enter input method (I for keyboard input, F for file input): ")
+
+   if input_method == "I":
+        n = int(input("Enter number of elements: "))
+        data = list(map(int, input("Enter the elements: ").split()))
+    
+    elif input_method == "F":
+        filename = input("enter the filename:")
+        with open(filename, "r") as file:
+            n = int(file.readline())
+            data = list(map(int, file.readline().split()))
+
+    else:
+        print("Invalid input method")
+        return
 
 
-    # input from keyboard
-    n = int(input())
-    data = list(map(int, input().split()))
-
-    # checks if lenght of data is the same as the said lenght
     assert len(data) == n
 
-    # calls function to assess the data 
-    # and give back all swaps
+   
     swaps = build_heap(data)
 
-    # TODO: output how many swaps were made, 
-    # this number should be less than 4n (less than 4*len(data))
-
+ 
 
     # output all swaps
     print(len(swaps))
-    for i, j in swaps:
-        print(i, j)
+    for swap in swaps:
+        print(swap[0], swap[1])
 
 
 if __name__ == "__main__":
