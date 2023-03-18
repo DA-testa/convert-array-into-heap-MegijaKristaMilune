@@ -8,10 +8,6 @@ def build_heap(data):
     for i in range(n // 2 -1, -1, -1):
         heap(data, i, n, swaps)
     return swaps
-
-
-
-
                 
 
 def heap(data, i, n, swaps):
@@ -36,13 +32,15 @@ def heap(data, i, n, swaps):
 
 def main():
 
-    input_method = (input("Enter input method (I for keyboard input, F for file input): "))
+    input_method = (input("enter input method I/F: "))
 
     if "I" in input_method:
         n = int(input("enter number of elements: "))
         data = list(map(int, input("enter the elements: ").split()))
+
     if "F" in input_method:
         filename = input("enter the filename:")
+        
         with open(f"tests/{filename}") as file:
             n = int(file.readline())
             data = list(map(int, file.readline().split()))
