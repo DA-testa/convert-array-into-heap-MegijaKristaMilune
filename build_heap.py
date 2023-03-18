@@ -71,9 +71,9 @@ def main():
             n = int(file.readline())
             data = list(map(int, file.readline().split()))
 
-    # else:
-    #     print("Invalid input method")
-    #     return
+    else:
+        print("Invalid input method")
+        return
     
     assert len(data) == n
 
