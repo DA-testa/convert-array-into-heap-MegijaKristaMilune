@@ -11,15 +11,15 @@ def build_heap(data):
                 
 
 def heap(data, i, n, swaps):
-    left_child = 2*i+1
-    right_child = 2*i+2
+    pos_l = 2*i+1
+    pos_r = 2*i+2
     pos = i
 
-    if left_child < n and data[left_child] < data[i]:
-        pos = left_child
+    if pos_l < n and data[pos_l] < data[i]:
+        pos = pos_l
 
-    if right_child < n and data[right_child] < data[pos]:
-        pos = right_child
+    if pos_r < n and data[pos_r] < data[pos]:
+        pos = pos_r
 
     if pos != i:
 
@@ -42,9 +42,9 @@ def main():
         filename = input("enter the filename:")
         
         with open(f"tests/{filename}") as file:
+
             n = int(file.readline())
             data = list(map(int, file.readline().split()))
-
 
     
     assert len(data) == n
@@ -57,8 +57,6 @@ def main():
 
 
         print(i, j)
-
-
 
 if __name__ == "__main__":
     main()
