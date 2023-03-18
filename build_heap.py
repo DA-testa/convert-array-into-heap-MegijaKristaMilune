@@ -9,15 +9,15 @@ def build_heap(data):
     return swaps
 
  def heap(data, i, n, swaps):
-    left_child = 2*i+1
-    right_child = 2*i+2
+    pos_left = 2*i+1
+    pos_right = 2*i+2
     last = i
 
-    if left_child < n and data[left_child] < data[i]:
-        last = left_child
+    if pos_left < n and data[pos_left] < data[i]:
+        last = pos_left
 
-    if right_child < n and data[right_child] < data[last]:
-        last = right_child
+    if pos_right < n and data[pos_right] < data[last]:
+        last = pos_right
 
     if last != i:
 
@@ -35,8 +35,10 @@ def main():
     if "I" in input_method:
         n = int(input("enter number of elements: "))
         data = list(map(int, input("enter the elements: ").split()))
+
     if "F" in input_method:
         filename = input("enter the filename:")
+        
         with open(f"tests/{filename}") as file:
             n = int(file.readline())
             data = list(map(int, file.readline().split()))
