@@ -5,37 +5,11 @@ def build_heap(data):
     n = len(data)
   
 
-    # for i in range(n // 2 -1, -1, -1):
-    #     heapify(data, i, n, swaps)
-
-
-    # return swaps
-
 
     for i in range(n // 2 -1, -1, -1):
         heap(data, i, n, swaps)
     return swaps
 
-    #     while True:
-    #         left_child = 2*j+1
-    #         right_child = 2*j+2
-    #         smallest = j
-            
-    #         if left_child < n and data[left_child] < data[smallest]:
-    #             smallest = left_child
-    #         if right_child < n and data[right_child] < data[smallest]:
-    #             smallest = right_child
-
-
-    #         if j != smallest:
-    #             swaps.append((j, smallest))
-    #             data[j], data[smallest] = data[smallest], data[j]
-    #             j = smallest
-
-    #         else:
-    #             break
-
-    # return swaps
 
 
 
@@ -74,9 +48,7 @@ def main():
             n = int(file.readline())
             data = list(map(int, file.readline().split()))
 
-    else:
-        print("Invalid input method")
-        return
+
     
     assert len(data) == n
 
@@ -85,8 +57,7 @@ def main():
     
     print(len(swaps))
     for i, j  in swaps:
-        # if i > j:
-        #     i, j = j, i
+
 
         print(i, j)
 
