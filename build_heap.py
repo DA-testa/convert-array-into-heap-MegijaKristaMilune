@@ -11,7 +11,6 @@ def build_heap(data):
 
     return swaps
 
-
 def heapify(data, i, n, swaps):
     left_child = 2*i+1
     right_child = 2*i+2
