@@ -13,21 +13,21 @@ def build_heap(data):
 def heap(data, i, n, swaps):
     left_child = 2*i+1
     right_child = 2*i+2
-    smallest = i
+    pos = i
 
     if left_child < n and data[left_child] < data[i]:
-        smallest = left_child
+        pos = left_child
 
-    if right_child < n and data[right_child] < data[smallest]:
-        smallest = right_child
+    if right_child < n and data[right_child] < data[pos]:
+        pos = right_child
 
-    if smallest != i:
+    if pos != i:
 
-        data[i], data[smallest] = data[smallest], data[i]
+        data[i], data[pos] = data[pos], data[i]
 
-        swaps.append((i, smallest))
+        swaps.append((i, pos))
 
-        heap(data, smallest, n, swaps)
+        heap(data, pos, n, swaps)
 
 
 def main():
