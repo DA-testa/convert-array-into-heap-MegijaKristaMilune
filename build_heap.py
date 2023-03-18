@@ -13,49 +13,52 @@ def build_heap(data):
 
 
     for i in range(n // 2 -1, -1, -1):
-        j = 1
-
-        while True:
-            left_child = 2*j+1
-            right_child = 2*j+2
-            smallest = j
-            
-            if left_child < n and data[left_child] < data[smallest]:
-                smallest = left_child
-            if right_child < n and data[right_child] < data[smallest]:
-                smallest = right_child
-
-
-            if j != smallest:
-                swaps.append((j, smallest))
-                data[j], data[smallest] = data[smallest], data[j]
-                j = smallest
-
-            else:
-                break
-
+        heap(data, i, n, swaps)
     return swaps
+
+    #     while True:
+    #         left_child = 2*j+1
+    #         right_child = 2*j+2
+    #         smallest = j
+            
+    #         if left_child < n and data[left_child] < data[smallest]:
+    #             smallest = left_child
+    #         if right_child < n and data[right_child] < data[smallest]:
+    #             smallest = right_child
+
+
+    #         if j != smallest:
+    #             swaps.append((j, smallest))
+    #             data[j], data[smallest] = data[smallest], data[j]
+    #             j = smallest
+
+    #         else:
+    #             break
+
+    # return swaps
+
+
 
                 
 
-# def heapify(data, i, n, swaps):
-#     left_child = 2*i+1
-#     right_child = 2*i+2
-#     smallest = i
+def heap(data, i, n, swaps):
+    left_child = 2*i+1
+    right_child = 2*i+2
+    smallest = i
 
-#     if left_child < n and data[left_child] < data[smallest]:
-#         smallest = left_child
+    if left_child < n and data[left_child] < data[i]:
+        smallest = left_child
 
-#     if right_child < n and data[right_child] < data[smallest]:
-#         smallest = right_child
+    if right_child < n and data[right_child] < data[smallest]:
+        smallest = right_child
 
-#     if smallest != i:
+    if smallest != i:
 
-#         data[i], data[smallest] = data[smallest], data[i]
+        data[i], data[smallest] = data[smallest], data[i]
 
-#         swaps.append((i, smallest))
+        swaps.append((i, smallest))
 
-#         heapify(data, smallest, n, swaps)
+        heap(data, smallest, n, swaps)
 
 
 def main():
@@ -71,9 +74,9 @@ def main():
             n = int(file.readline())
             data = list(map(int, file.readline().split()))
 
-    else:
-        print("Invalid input method")
-        return
+    # else:
+    #     print("Invalid input method")
+    #     return
     
     assert len(data) == n
 
@@ -82,8 +85,8 @@ def main():
     
     print(len(swaps))
     for i, j  in swaps:
-        if i > j:
-            i, j = j, i
+        # if i > j:
+        #     i, j = j, i
 
         print(i, j)
 
